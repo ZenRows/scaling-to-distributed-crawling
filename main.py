@@ -19,6 +19,6 @@ while True:
         print('Timeout! No more items to process')
         break
 
-    url = item[1].decode("utf-8")
-    print('** pop URL', url)
+    url = item[1].decode('utf-8')
+    print('Pop URL', url)
     queue_url.delay(url, maximum_items)

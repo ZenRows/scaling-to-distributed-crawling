@@ -43,7 +43,7 @@ def _crawl(url, get_html, extract_content):
     print('Crawl ->', url)
 
     html = get_html(url)
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, 'html.parser')
 
     links = _extract_links(url, soup)
     content = extract_content(url, soup)

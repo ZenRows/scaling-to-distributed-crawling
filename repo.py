@@ -39,10 +39,6 @@ def add_to_queue(value):
     connection.sadd(queued_key, value)
 
 
-def remove_from_queue(value):
-    connection.srem(queued_key, value)
-
-
 def is_queued(value):
     return connection.sismember(queued_key, value)
 
@@ -52,7 +48,7 @@ def move_from_queued_to_visited(value):
 
 
 # Content
-def set_content(key=None, value=None):
+def set_content(key, value):
     connection.hset(content_key, key=key, value=value)
 
 

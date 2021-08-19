@@ -7,7 +7,7 @@ def extract_content(url, soup):
 
 
 def store_content(url, content):
-    repo.set_content(key=url, value=content)
+    repo.set_content(url, content)
 
 
 def allow_url_filter(url):

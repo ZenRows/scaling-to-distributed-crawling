@@ -16,7 +16,7 @@ def extract_content(url, soup):
 def store_content(url, content):
     for item in content:
         if item['id']:
-            repo.set_content(key=item['id'], value=json.dumps(item))
+            repo.set_content(item['id'], json.dumps(item))
 
 
 def allow_url_filter(url):
