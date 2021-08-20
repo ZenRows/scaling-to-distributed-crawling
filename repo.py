@@ -11,10 +11,12 @@ content_key = 'crawling:content'
 def add_to_visit(value):
     # LPOS command is not available in Redis library
     if connection.execute_command('LPOS', to_visit_key, value) is None:
+        # add URL to the end of the list
         connection.rpush(to_visit_key, value)
 
 
 def pop_to_visit_blocking(timeout=0):
+    # pop URL from the beginning of the list
     return connection.blpop(to_visit_key, timeout)
 
 
@@ -44,6 +46,7 @@ def is_queued(value):
 
 
 def move_from_queued_to_visited(value):
+    # atomically move a URL from queued to visited
     connection.smove(queued_key, visited_key, value)
 
 

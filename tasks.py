@@ -15,9 +15,9 @@ app_client = app.connection().channel().client
 
 @app.task
 def queue_url(url, maximum_items):
-    queued_count = app_client.llen(queue_name)
+    queued_count = app_client.llen(queue_name) # Celery's queue length
 
-    parser = get_parser(url)
+    parser = get_parser(url) # get the parser, either custom or the default one
     result = crawl(url, queued_count, maximum_items,
                    parser.get_html, parser.extract_content)
 
