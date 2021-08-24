@@ -1,6 +1,7 @@
 from tasks import queue_url
 import repo
 
+
 starting_url = 'https://scrapeme.live/shop/page/1/'
 # starting_url = 'http://quotes.toscrape.com/page/1/'
 

@@ -2,6 +2,7 @@ import time
 import re
 import random
 
+
 def get_html(url):
     try:
         page = int(re.search(r'\d+', url).group())

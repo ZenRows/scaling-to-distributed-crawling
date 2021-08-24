@@ -1,11 +1,13 @@
 from redis import Redis
 
+
 connection = Redis(db=1)
 
 to_visit_key = 'crawling:to_visit'
 visited_key = 'crawling:visited'
 queued_key = 'crawling:queued'
 content_key = 'crawling:content'
+
 
 # To Visit
 def add_to_visit(value):
@@ -31,6 +33,7 @@ def add_visited(value):
 
 def is_visited(value):
     return connection.sismember(visited_key, value)
+
 
 # Queued
 def count_queued():

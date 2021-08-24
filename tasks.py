@@ -1,7 +1,7 @@
 from celery import Celery
-
 from crawler import crawl, add_results_to_queue
 from parserlist import get_parser
+
 
 queue_name = 'celery'
 app = Celery(
@@ -15,9 +15,11 @@ app_client = app.connection().channel().client
 
 @app.task
 def queue_url(url, maximum_items):
-    queued_count = app_client.llen(queue_name) # Celery's queue length
+    # Celery's queue length
+    queued_count = app_client.llen(queue_name)
 
-    parser = get_parser(url) # get the parser, either custom or the default one
+    # get the parser, either custom or the default one
+    parser = get_parser(url)
     result = crawl(url, queued_count, maximum_items,
                    parser.get_html, parser.extract_content)
 

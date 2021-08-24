@@ -1,5 +1,6 @@
 import requests
 
+
 def get_html(url, headers=None, proxies=None):
     try:
         response = requests.get(url, headers=headers, proxies=proxies)
